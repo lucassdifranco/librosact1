@@ -16,11 +16,11 @@ class LibrosController{
         const [result] = await pool.query(`INSERT INTO libros(nombre, autor, categoria, anopublicacion, isbn) VALUES(?, ?, ?, ?, ?)`, [libro.nombre, libro.autor, libro.categoria, libro.anopublicacion, libro.isbn]);
         res.json({"Libro Instertado": result.insertId});
     }
-    async delete(req, res){
-        const libro = req.body;
-        const [result] = await pool.query(`DELETE FROM libros Where id=(?)`, [libro.id]);
-        res.json({"Registros eliminados": result.affectedRows});
-    }
+   async delete(req, res){
+       const libro = req.body;
+       const [result] = await pool.query(`DELETE FROM libros WHERE id=(?)`, [libro.id]);
+       res.json({"Registros eliminados": result.affectedRows});
+   }
     
         }
     
