@@ -21,6 +21,11 @@ class LibrosController{
        const [result] = await pool.query(`DELETE FROM libros WHERE id=(?)`, [libro.id]);
        res.json({"Registros eliminados": result.affectedRows});
    }
+    async update(req, res){
+        const libro = req.body;
+        const [result] = await pool.query(`UPDATE libros SET nombre=(?), autor=(?), categoria=(?), anopublicacion=(?), isbn=(?) WHERE id=(?)`, [libro.nombre, libro.autor, libro.categoria, libro.anopublicacion, libro.isbn, libro.id]);
+        res.json({"Registros Actualizados": result.changedRows});
+    }
     
         }
     
